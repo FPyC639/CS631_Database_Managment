@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display SELECT Statement in Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>SELECT Statement Result</h2>
+    <form method="post" action="table.php">
+        <select name="empjobclass">
+            <option value="HCP">
+                HCP
+            </option>
+            <option value="MD">
+                Doctor
+            </option>
+            <option value="Nurse">
+                Nurse
+            </option>
+            <option value="Admin">
+                Admin
+            </option>
+        </select>
+        <p><input type="reset" value="Clear Form" />&nbsp; 
+            &nbsp;<input type="submit" name="Submit" 
+            value="Send Form" /></p>
+    </form>
+    <br>
+</body>
+</html>
