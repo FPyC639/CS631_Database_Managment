@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" name="viewport" content="text/html; charset=UTF-8">
-	<title>employee.html</title>
+	<title>facility.html</title>
 	<style>
         body {
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 120vh;
+            height: 80vh;
         }
         h1 {
             color: #bb591c;
@@ -123,41 +123,21 @@
     </style>
 </head>
 <script type="text/javascript">
-    function EmpJobClassCheck(that) {
-    	if (that.value == "HCP") 
+    function FacTypeCheck(that) {
+    	if (that.value == "Office") 
         {
-            document.getElementById("HCP").style.display = "block";
-            document.getElementById("MD").style.display = "none";
-            document.getElementById("Nurse").style.display = "none";
-            document.getElementById("Admin").style.display = "none";
+            document.getElementById("Office").style.display = "block";
+            document.getElementById("OPS").style.display = "none";
         }
-    	else if (that.value == "MD") 
+    	else if (that.value == "OPS") 
         {
-            document.getElementById("MD").style.display = "block";
-            document.getElementById("HCP").style.display = "none";
-            document.getElementById("Nurse").style.display = "none";
-            document.getElementById("Admin").style.display = "none";
-        }
-    	else if (that.value == "Nurse") 
-        {
-            document.getElementById("Nurse").style.display = "block";
-            document.getElementById("MD").style.display = "none";
-            document.getElementById("HCP").style.display = "none";
-            document.getElementById("Admin").style.display = "none";
-        }
-    	else if (that.value == "Admin") 
-        {
-            document.getElementById("Admin").style.display = "block";
-            document.getElementById("MD").style.display = "none";
-            document.getElementById("Nurse").style.display = "none";
-            document.getElementById("HCP").style.display = "none";
+            document.getElementById("OPS").style.display = "block";
+            document.getElementById("Office").style.display = "none";
         }
         else
         {
-            document.getElementById("HCP").style.display = "none";
-            document.getElementById("MD").style.display = "none";
-            document.getElementById("Nurse").style.display = "none";
-            document.getElementById("Admin").style.display = "none";
+            document.getElementById("Office").style.display = "none";
+            document.getElementById("OPS").style.display = "none";
         }
     }
     function InsertUpdateCheck(that) {
@@ -182,60 +162,45 @@
     }
 </script>
 <body>
-<form name="employee" action="http://localhost:8080/DB_Final_Project/Main" method="post">
-	<h1>MHS Employee Management</h1>
-	<p><input type = "hidden" name = "table-name" value = "Employee" /></p>
+<form name="facility" action="http://localhost:8080/DB_Final_Project/Main" method="post">
+	<h1>MHS Facility Management</h1>
+	<p><input type = "hidden" name = "table-name" value = "facility" /></p>
 	<p> Select an option from the dropdown: 
 	<select onchange="InsertUpdateCheck(this)" name="operation">
 		<option hidden disabled selected value> -- select an option -- </option>
-		<option value="Insert"> Insert New Record into Employee Table </option>
-        <option value="Update"> Update Existing Record in Employee Table </option>
+		<option value="Insert"> Insert New Record into Facility Table </option>
+        <option value="Update"> Update Existing Record in Facility Table </option>
 	</select>
 	</p>
 	<div id="Insert" style="display: none;">
-		<p>Employee SSN: <input type="text" name="empssn" required
-			oninvalid="this.setCustomValidity('* SSN value required *')" 
-	    	oninput="this.setCustomValidity('')" /></p>
 	</div>
 	<div id="Update" style="display: none;">
-		<p>Employee ID: <input type="text" name="empid" required
-			oninvalid="this.setCustomValidity('* Employee ID value required *')" 
+		<p>Facility ID: <input type="text" name="facid" required
+			oninvalid="this.setCustomValidity('* Facility ID value required *')" 
 	    	oninput="this.setCustomValidity('')" /></p>
-		<p>Employee SSN: <input type="text" name="empssn" /></p>
 	</div>
 	<div id="MakeVisible" style="display: none;">
-		<p>Employee First Name: <input type="text" name="empfname" /></p>
-		<p>Employee Middle Initial: <input type="text" name="empminit" /></p>
-		<p>Employee Last Name: <input type="text" name="emplname" /></p>
-		<p>Employee Street Address: <input type="text" name="empstreet" /></p>
-		<p>Employee City: <input type="text" name="empcity" /></p>
-		<p>Employee State: <input type="text" name="empstate" /></p>
-		<p>Employee Zip Code: <input type="text" name="empzip" /></p>
-		<p>Employee Salary: <input type="number" placeholder="50000.00" step="0.01" name="empsal" /></p>
-		<p>Employee Hire Date: <input type="date" name="emphiredt" /></p>
-		<p>Employee Facility ID: <input type="text" name="empfac" /></p>
-	    <p>Employee Job Class: 
-	    <select onchange="EmpJobClassCheck(this)" name="empjobclass">
+		<p>Facility Street Address: <input type="text" name="facstreet" /></p>
+		<p>Facility City: <input type="text" name="faccity" /></p>
+		<p>Facility State: <input type="text" name="facstate" /></p>
+		<p>Facility Zip Code: <input type="text" name="faczip" /></p>
+		<p>Facility Size: <input type="number" placeholder="3000.00" step="0.01" name="facsize" /></p>
+	    <p>Facility Type: 
+	    <select onchange="FacTypeCheck(this)" name="factype">
 	    	<option hidden disabled selected value> -- select an option -- </option>
-	        <option value="HCP"> HCP </option>
-	        <option value="MD"> Doctor </option>
-	        <option value="Nurse"> Nurse </option>
-	        <option value="Admin"> Admin </option>
+	        <option value="Office"> Office </option>
+	        <option value="OPS"> Outpatient Surgery </option>
 	    </select>
 	    </p>
 		<br />
-		<div id="HCP" style="display: none;">
-			<p>HCP Job Title: <input type="text" name="emptitle" /></p>
+		<div id="Office" style="display: none;">
+			<p>Office Count: <input type="number" placeholder="1" name="officecount" /></p>
 		</div>
-		<div id="MD" style="display: none;">
-			<p>Doctor Specialty: <input type="text" name="empspec" /></p>
-			<p>Doctor Board Certification Date: <input type="date" name="empbdcertdt"/></p>
-		</div>
-		<div id="Nurse" style="display: none;">
-			<p>Nurse Certification: <input type="text" name="empcert"/></p>
-		</div>
-		<div id="Admin" style="display: none;">
-			<p>Admin Job Title: <input type="text" name="emptitle"/></p>
+		<div id="OPS" style="display: none;">
+			<p>Procedure Code: <input type="text" name="opsproccode"/></p>
+			<p>Procedure Description: <input type="text" name="opsprocdesc"/></p>
+			<p>Room Count: <input type="number" placeholder="1" name="opsroomcount"/></p>
+			
 		</div>
 		<br />
 		<br />
