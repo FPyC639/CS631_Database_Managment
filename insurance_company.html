@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 50vh;
+            height: 60vh;
         }
         h1 {
             color: #bb591c;
@@ -21,6 +21,7 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 1em;
+            text-align: center;
         }
         p {
             color: #1ab305;
@@ -121,19 +122,58 @@
         }
     </style>
 </head>
+<script type="text/javascript">
+    function InsertUpdateCheck(that) {
+    	if (that.value == "Insert") 
+        {
+            document.getElementById("Insert").style.display = "block";
+            document.getElementById("Update").style.display = "none";
+            document.getElementById("MakeVisible").style.display = "block";
+        }
+    	else if (that.value == "Update") 
+        {
+            document.getElementById("Update").style.display = "block";
+            document.getElementById("Insert").style.display = "none";
+            document.getElementById("MakeVisible").style.display = "block";
+        }
+        else
+        {
+            document.getElementById("Insert").style.display = "none";
+            document.getElementById("Update").style.display = "none";
+            document.getElementById("MakeVisible").style.display = "none";
+        }
+    }
+</script>
 <body>
 <form name="insurance_company" action="http://localhost:8080/DB_Final_Project/Main" method="post">
-	<h1>Insert Record in Insurance Company Table</h1>
-	<p>Company Name: <input type="text" name="inscompname" /></p>
-	<p>Company Street Address: <input type="text" name="inscompstreet" /></p>
-	<p>Company City: <input type="text" name="inscompcity" /></p>
-	<p>Company State: <input type="text" name="inscompstate" /></p>
-	<p>Company Zip Code: <input type="text" name="inscompzip" /></p>
-	<br />
-	<br />
-	<p><input type="reset" value="Clear Form" />&nbsp; 
-	&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="Submit" 
-	value="Send Form" /></p>
+	<h1>MHS Insurance Company Module</h1>
+	<input type = "hidden" name = "table-name" value = "Insurance_Company" />
+	<p>Select an option from the dropdown:
+	<select onchange="InsertUpdateCheck(this)" name="operation">
+		<option hidden disabled selected value> -- select an option -- </option>
+		<option value="Insert"> Insert New Record into Insurance Company Table </option>
+        <option value="Update"> Update Existing Record in Insurance Company Table </option>
+	</select>
+	</p>
+	<div id="Insert" style="display: none;">
+	</div>
+	<div id="Update" style="display: none;">
+		<p>Insurer ID: <input type="text" name="insid" required
+			oninvalid="this.setCustomValidity('* Insurer ID value required *')" 
+	    	oninput="this.setCustomValidity('')" /></p>
+	</div>
+	<div id="MakeVisible" style="display: none;">
+		<p>Company Name: <input type="text" name="inscompname" /></p>
+		<p>Company Street Address: <input type="text" name="inscompstreet" /></p>
+		<p>Company City: <input type="text" name="inscompcity" /></p>
+		<p>Company State: <input type="text" name="inscompstate" /></p>
+		<p>Company Zip Code: <input type="text" name="inscompzip" /></p>
+		<br />
+		<br />
+		<p><input type="reset" value="Clear Form" />&nbsp; 
+		&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="Submit" 
+		value="Send Form" /></p>
+	</div>
 </form>
 </body>
 </html>
