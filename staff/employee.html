@@ -182,7 +182,7 @@
     }
 </script>
 <body>
-<form name="employee" action="http://localhost:8080/DB_Final_Project/Main" method="post">
+<form name="employee" action="mcrud.php" method="post">
 	<h1>MHS Employee Management</h1>
 	<p><input type = "hidden" name = "table-name" value = "Employee" /></p>
 	<p> Select an option from the dropdown: 
@@ -193,17 +193,14 @@
 	</select>
 	</p>
 	<div id="Insert" style="display: none;">
-		<p>Employee SSN: <input type="text" name="empssn" required
-			oninvalid="this.setCustomValidity('* SSN value required *')" 
-	    	oninput="this.setCustomValidity('')" /></p>
+		<!-- <p>Employee SSN: <input type="text" name="empssn" /></p> -->
 	</div>
 	<div id="Update" style="display: none;">
-		<p>Employee ID: <input type="text" name="empid" required
-			oninvalid="this.setCustomValidity('* Employee ID value required *')" 
-	    	oninput="this.setCustomValidity('')" /></p>
-		<p>Employee SSN: <input type="text" name="empssn" /></p>
+		<p>Employee ID: <input type="text" name="empid"/></p>
+		<!-- <p>Employee SSN: <input type="text" name="empssn" /></p> -->
 	</div>
 	<div id="MakeVisible" style="display: none;">
+        <p>Employee SSN2: <input type="text" name="empssn" /></p>
 		<p>Employee First Name: <input type="text" name="empfname" /></p>
 		<p>Employee Middle Initial: <input type="text" name="empminit" /></p>
 		<p>Employee Last Name: <input type="text" name="emplname" /></p>

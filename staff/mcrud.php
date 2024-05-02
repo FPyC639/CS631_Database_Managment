@@ -33,7 +33,7 @@ function getLastInsertedID() {
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Your database insertion code here
-    
+    if($_POST["operation"] == "Insert"){
     // Retrieve the last inserted ID
     storeLastInsertedID($conn);
 
@@ -42,19 +42,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     //Vars
     $empssn = $_POST["empssn"];
+    echo $_POST["empssn"];
     $empfname = $_POST["empfname"];
-    $empmi = $_POST['empmi'];
+    $empmi = $_POST['empminit'];
     $emplname = $_POST['emplname'];
     $empstreet = $_POST['empstreet'];
     $empcity = $_POST['empcity'];
     $empstate = $_POST['empstate'];
     $empzip = $_POST['empzip'];
-    $empsalary = $_POST['empsalary'];
-    $emphired = $_POST['emphired'];
+    $empsalary = $_POST['empsal'];
+    $emphired = $_POST['emphiredt'];
     $empfac = $_POST['empfac'];
-    $emptitle = $_POST['empadmin'];
-    $empsp = $_POST['empsp'];
-    $empbcd = $_POST['empbdcert'];
+    $emptitle = $_POST['emptitle'];
+    $empsp = $_POST['empspec'];
+    $empbcd = $_POST['empbdcertdt'];
     $empjobclass = $_POST['empjobclass'];
     // Example: Use $lastInsertedID in your subsequent insertions
     $sql = "INSERT INTO Employee (
@@ -112,6 +113,7 @@ if ($results) {
     $lastEmployeeID = $lastResult['Employee_ID'];
     
     // Output the last Employee_ID
+    echo "SSN $empssn";
     echo "Last Employee ID where Job_Class='HCP': $lastEmployeeID";
 } else {
     echo "No results found where Job_Class='HCP'";
@@ -256,7 +258,60 @@ $stmt->closeCursor();
         default:
             // Default table if no match is found
             $tableName = "default_table";
+        }
     }
-    
+    else{
+        $employee_id = $_POST["employee_id"];
+        $new_salary = $_POST["new_salary"];
+
+        // Connect to your database
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "MHS";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Get old values
+        $old_values = [];
+        $sql_old = "SELECT * FROM Employee WHERE Employee_ID='$employee_id'";
+        $result_old = $conn->query($sql_old);
+        if ($result_old->num_rows > 0) {
+            $row_old = $result_old->fetch_assoc();
+            $old_values = $row_old;
+        }
+
+        // Update database values
+        $sql_update = "UPDATE Employee SET Salary='$new_salary' WHERE Employee_ID='$employee_id'";
+        $result_update = $conn->query($sql_update);
+
+        // Get updated values
+        $updated_values = [];
+        $sql_updated = "SELECT * FROM Employee WHERE Employee_ID='$employee_id'";
+        $result_updated = $conn->query($sql_updated);
+        if ($result_updated->num_rows > 0) {
+            $row_updated = $result_updated->fetch_assoc();
+            $updated_values = $row_updated;
+        }
+
+        // Print old values
+        echo "<h2>Old Values</h2>";
+        echo "<pre>";
+        print_r($old_values);
+        echo "</pre>";
+
+        // Print updated values
+        echo "<h2>New Values</h2>";
+        echo "<pre>";
+        print_r($updated_values);
+        echo "</pre>";
+
+        $conn->close();
+    }
 }
 ?>
