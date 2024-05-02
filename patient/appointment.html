@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh;
+            height: 110vh;
         }
         h1 {
             color: #bb591c;
@@ -21,6 +21,7 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 1em;
+            text-align: center;
         }
         p {
             color: #1ab305;
@@ -121,18 +122,143 @@
         }
     </style>
 </head>
+<script type="text/javascript">
+    function InsertUpdateCheck(that) {
+    	if (that.value == "Insert") 
+        {
+            document.getElementById("Insert").style.display = "block";
+            document.getElementById("Update").style.display = "none";
+        }
+    	else if (that.value == "Update") 
+        {
+            document.getElementById("Update").style.display = "block";
+            document.getElementById("Insert").style.display = "none";
+        }
+        else
+        {
+            document.getElementById("Insert").style.display = "none";
+            document.getElementById("Update").style.display = "none";
+        }
+    }
+    function UpdateCheckTypes(that) {
+    	if (that.value == "Basic_Update")
+        {
+            document.getElementById("Basic_Update").style.display = "block";
+            document.getElementById("Cascade_Update").style.display = "none";
+        }
+    	else if (that.value == "Cascade_Update") 
+        {
+            document.getElementById("Cascade_Update").style.display = "block";
+            document.getElementById("Basic_Update").style.display = "none";
+        }
+        else
+        {
+            document.getElementById("Basic_Update").style.display = "none";
+            document.getElementById("Cascade_Update").style.display = "none";
+        }
+    }
+</script>
 <body>
-<form name="employee" action="http://localhost:8080/DB_Final_Project/Main" method="post">
-	<h1>Create New Appointment</h1>
-	<p>Patient ID: <input type="text" name="patid" /></p>
-	<p>Physician ID: <input type="text" name="docid" /></p>
-	<p>Facility ID: <input type="text" name="facid" /></p>
-	<p>Appointment Date and Time: <input type="datetime-local" name="apptdatetime" /></p>
-	<p>Description: <input type="text" name="apptdesc" /></p>
-	<br />
-	<br />
-	<p><input type="reset" value="Clear Form" />&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="Submit" value="Send Form" /></p>
+<form name="appointment" action="http://localhost:8080/DB_Final_Project/Main" method="post">
+	<h1>MHS Appointment Management</h1>
+	<p><input type = "hidden" name = "table-name" value = "Invoice_Detail" /></p>
+	<p>Select an option from the dropdown:&nbsp;&nbsp;
+	<select onchange="InsertUpdateCheck(this)" name="operation">
+		<option hidden disabled selected value> -- select an option -- </option>
+		<option value="Insert"> Create New Appointment </option>
+        <option value="Update"> Update Existing Appointment </option>
+	</select>
+	</p>
+	<div id="Insert" style="display: none;">
+		<p><input type = "hidden" name = "operation-type" value = "Basic_Insert" /></p>
+		<p>Patient ID:&nbsp;&nbsp; <input type="text" name="patid" required
+				oninvalid="this.setCustomValidity('* Patient ID value required *')" 
+		    	oninput="this.setCustomValidity('')" /></p>
+		<p>Physician ID:&nbsp;&nbsp; <input type="text" name="docid" required
+				oninvalid="this.setCustomValidity('* Physician ID value required *')" 
+		    	oninput="this.setCustomValidity('')" /></p>
+		<p>Facility ID:&nbsp;&nbsp; <input type="text" name="facid" required
+				oninvalid="this.setCustomValidity('* Facility ID value required *')" 
+		    	oninput="this.setCustomValidity('')" /></p>
+		<p>Appointment Date and Time:&nbsp;&nbsp; <input type="datetime-local" name="apptdatetime" required
+				oninvalid="this.setCustomValidity('* Appointment Date and Time required *')" 
+		    	oninput="this.setCustomValidity('')" /></p>
+		<p>Description:&nbsp;&nbsp; <input type="text" name="apptdesc" /></p>
+		<p><input type="reset" value="Clear Form" />&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="Submit"
+			value="Send Form" /></p>
+		<br />
+		<br />
+	</div>
+	<div id="Update" style="display: none;">
+		<!-- Section to insert new record into Invoice Table upon update of appointment -->
+		<p>Select an option from the dropdown:&nbsp;&nbsp;
+		<select onchange="UpdateCheckTypes(this)" name="operation-type">
+			<option hidden disabled selected value> -- select an option -- </option>
+			<option value="Basic_Update"> Change Basic Appointment Details </option>
+	        <option value="Cascade_Update"> Update Existing Appointment, including Cost </option>
+		</select>
+		</p>
+		<div id="Basic_Update" style="display: none;">
+			<p>** Note: Enter data in "New" Fields only if you want to update those fields **</p>
+			<br />
+			<p>Patient ID on Original Appointment:&nbsp;&nbsp; <input type="text" name="patid" required
+					oninvalid="this.setCustomValidity('* Patient ID value required *')" 
+			    	oninput="this.setCustomValidity('')" /></p>
+			<p>New Patient ID (if applicable): <input type="text" name="newpatid" /></p>
+			<p>Physician ID on Original Appointment:&nbsp;&nbsp; <input type="text" name="docid" required
+					oninvalid="this.setCustomValidity('* Physician ID value required *')" 
+			    	oninput="this.setCustomValidity('')" /></p>
+			<p>New Physician ID (if applicable): <input type="text" name="newdocid" /></p>
+			<p>Facility ID on Original Appointment:&nbsp;&nbsp; <input type="text" name="facid" required
+					oninvalid="this.setCustomValidity('* Facility ID value required *')" 
+			    	oninput="this.setCustomValidity('')" /></p>
+			<p>New Facility ID (if applicable):&nbsp;&nbsp; <input type="text" name="newfacid" /></p>
+			<p>Appointment Date and Time on Original Appointment: <input type="datetime-local"
+					name="apptdatetime" required
+					oninvalid="this.setCustomValidity('* Appointment Date and Time required *')" 
+			    	oninput="this.setCustomValidity('')" /></p>
+			<p>New Appointment Date and Time (if applicable):&nbsp;&nbsp; <input type="datetime-local"
+					name="newapptdatetime" /></p>
+			<p>New Description (if applicable):&nbsp;&nbsp; <input type="text" name="apptdesc" /></p>
+			<p><input type="reset" value="Clear Form" />&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="Submit"
+			value="Send Form" /></p>
+			<br />
+			<br />
+		</div>
+		<div id="Cascade_Update" style="display: none;">
+			<p>** Note: Enter data in "New" Fields only if you want to update those fields **</p>
+			<br />
+			<p>Patient ID on Original Appointment:&nbsp;&nbsp; <input type="text" name="patid" required
+					oninvalid="this.setCustomValidity('* Patient ID value required *')" 
+			    	oninput="this.setCustomValidity('')" /></p>
+			<p>New Patient ID (if applicable):&nbsp;&nbsp; <input type="text" name="newpatid" /></p>
+			<p>Physician ID on Original Appointment:&nbsp;&nbsp; <input type="text" name="docid" required
+					oninvalid="this.setCustomValidity('* Physician ID value required *')" 
+			    	oninput="this.setCustomValidity('')" /></p>
+			<p>New Physician ID (if applicable):&nbsp;&nbsp; <input type="text" name="newdocid" /></p>
+			<p>Facility ID on Original Appointment:&nbsp;&nbsp; <input type="text" name="facid" required
+					oninvalid="this.setCustomValidity('* Facility ID value required *')" 
+			    	oninput="this.setCustomValidity('')" /></p>
+			<p>New Facility ID (if applicable):&nbsp;&nbsp; <input type="text" name="newfacid" /></p>
+			<p>Appointment Date and Time on Original Appointment:&nbsp;&nbsp; <input type="datetime-local"
+					name="apptdatetime" required
+					oninvalid="this.setCustomValidity('* Appointment Date and Time required *')" 
+			    	oninput="this.setCustomValidity('')" /></p>
+			<p>New Appointment Date and Time (if applicable):&nbsp;&nbsp; <input type="datetime-local"
+					name="newapptdatetime"
+					oninvalid="this.setCustomValidity('* Appointment Date and Time required *')" 
+			    	oninput="this.setCustomValidity('')" /></p>
+			<p>New Description (if applicable):&nbsp;&nbsp; <input type="text" name="apptdesc" /></p>
+			<p>Cost: <input type="number" placeholder="100.00" step="0.01" name="apptcost" /></p>
+			<p><input type="reset" value="Clear Form" />&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="Submit"
+			value="Send Form" /></p>
+			<br />
+			<br />
+		</div>
+	</div>
 </form>
 </body>
 </html>
