@@ -1,4 +1,56 @@
 <?php
+$sql = "Select Facility.Facility_ID, Street, City, State, Zip_Code, Size, Facility_Type,
+Office_Count, Procedure_Code, Procedure_Description, Room_Count From Facility
+CROSS JOIN Office
+LEFT JOIN Outpatient_Surgery
+ON Facility.Facility_ID = Office.Facility_ID and
+Outpatient_Surgery.Facility_ID = Facility.Facility_ID;";
+$result = $conn->query($sql);
+
+// Table header
+echo "<table>
+    <tr>
+        <th>Facility ID</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Size</th>
+        <th>Facility Type</th>
+        <th>Office Count</th>
+        <th>Procedure Code</th>
+        <th>Procedure Description</th>
+        <th>Room Count</th>
+    </tr>";
+
+// Display the results in a table
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row["Employee_ID"] . "</td>";
+        echo "<td>" . $row["SSN"] . "</td>";
+        echo "<td>" . $row["FName"] . "</td>";
+        echo "<td>" . $row["MInit"] . "</td>";
+        echo "<td>" . $row["LName"] . "</td>";
+        echo "<td>" . $row["Street"] . "</td>";
+        echo "<td>" . $row["City"] . "</td>";
+        echo "<td>" . $row["State"] . "</td>";
+        echo "<td>" . $row["Zip_Code"] . "</td>";
+        echo "<td>" . $row["Salary"] . "</td>";
+        echo "<td>" . $row["Hire_Date"] . "</td>";
+        echo "<td>" . $row["Job_Class"] . "</td>";
+        echo "<td>" . $row["Facility_ID"] . "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='13'>0 results</td></tr>";
+}
+
+// Close the table
+echo "</table>";
+
+?>
+<?php
 // Function to retrieve the last inserted ID and store it in session
 function storeLastInsertedID($conn) {
     $_SESSION['last_inserted_id'] = $conn->lastInsertId();
@@ -23,6 +75,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = "root";
     $password = ""; // Replace with your actual password
     $dbname = "MHS";
+    $i = "Insert";
+    $u = "Update";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -30,8 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
-    // Insert data into the Facility table based on the Facility Type
+    if($_POST["operation"] == $i){
     if ($factype == "Office") {
         $officecount = $_POST["officecount"];
         $sql = "INSERT INTO Facility (Street, City, State, Zip_Code, Size, Facility_Type) 
@@ -53,6 +106,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $conn->close();
+    }
+    if($_POST["operation"] = $u){
+
+    }
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
