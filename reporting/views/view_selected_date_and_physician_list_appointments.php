@@ -7,8 +7,8 @@
     <h2>List of Appointments for Selected Date and Physician</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $selected_date = $_POST["apptdate"]
-        $selected_doc_id = $_POST["docid"]
+        $selected_date = $_POST["apptdate"];
+        $selected_doc_id = $_POST["docid"];
         // Connect to your database
         $servername = "localhost";
         $username = "root";

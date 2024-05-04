@@ -7,8 +7,8 @@
     <h2>Best 5 Days by Total Revenue for Selected Month</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $selected_date_time = $_POST["apptdatetime"]
-        $selected_doc_id = $_POST["docid"]
+        $selected_date_time = $_POST["apptdatetime"];
+        $selected_doc_id = $_POST["docid"];
         // Connect to your database
         $servername = "localhost";
         $username = "root";

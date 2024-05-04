@@ -7,9 +7,9 @@
     <h2>List of Appointments by Selected Date Range and Facility</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $selected_begin_date = $_POST["apptbegindate"]
-        $selected_end_date = $_POST["apptenddate"]
-        $selected_fac_id = $_POST["facid"]
+        $selected_begin_date = $_POST["apptbegindate"];
+        $selected_end_date = $_POST["apptenddate"];
+        $selected_fac_id = $_POST["facid"];
         // Connect to your database
         $servername = "localhost";
         $username = "root";

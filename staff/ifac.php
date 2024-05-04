@@ -27,19 +27,17 @@ echo "<table>
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row["Employee_ID"] . "</td>";
-        echo "<td>" . $row["SSN"] . "</td>";
-        echo "<td>" . $row["FName"] . "</td>";
-        echo "<td>" . $row["MInit"] . "</td>";
-        echo "<td>" . $row["LName"] . "</td>";
+        echo "<td>" . $row["Facility_ID"] . "</td>";
         echo "<td>" . $row["Street"] . "</td>";
         echo "<td>" . $row["City"] . "</td>";
         echo "<td>" . $row["State"] . "</td>";
         echo "<td>" . $row["Zip_Code"] . "</td>";
-        echo "<td>" . $row["Salary"] . "</td>";
-        echo "<td>" . $row["Hire_Date"] . "</td>";
-        echo "<td>" . $row["Job_Class"] . "</td>";
-        echo "<td>" . $row["Facility_ID"] . "</td>";
+        echo "<td>" . $row["Size"] . "</td>";
+        echo "<td>" . $row["Facility_Type"] . "</td>";
+        echo "<td>" . $row["Office_Count"] . "</td>";
+        echo "<td>" . $row["Procedure_Code"] . "</td>";
+        echo "<td>" . $row["Procedure_Description"] . "</td>";
+        echo "<td>" . $row["Room_Count"] . "</td>";
         echo "</tr>";
     }
 } else {

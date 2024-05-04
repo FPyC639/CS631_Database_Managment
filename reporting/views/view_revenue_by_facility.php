@@ -7,8 +7,8 @@
     <h2>Revenue by Facility for Given Day</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $selected_date = $_POST["invdate"]
-        $selected_fac_id = $_POST["facid"]
+        $selected_date = $_POST["invdate"];
+        $selected_fac_id = $_POST["facid"];
         // Connect to your database
         $servername = "localhost";
         $username = "root";

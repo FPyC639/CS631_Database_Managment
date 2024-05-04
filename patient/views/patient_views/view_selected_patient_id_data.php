@@ -7,7 +7,7 @@
     <h2>Patient Table Data for Selected Patient_ID</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $selected_pat_id = $_POST["patid"]
+        $selected_pat_id = $_POST["patid"];
         // Connect to your database
         $servername = "localhost";
         $username = "root";

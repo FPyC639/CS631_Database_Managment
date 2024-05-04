@@ -7,8 +7,8 @@
     <h2>Revenue in Selected Date Range from Insurance Companies</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $selected_begin_date = $_POST["apptbegindate"]
-        $selected_end_date = $_POST["apptenddate"]
+        $selected_begin_date = $_POST["apptbegindate"];
+        $selected_end_date = $_POST["apptenddate"];
         // Connect to your database
         $servername = "localhost";
         $username = "root";

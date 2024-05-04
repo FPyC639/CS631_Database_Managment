@@ -24,9 +24,9 @@
 
         $sql_initial = "SELECT E.Job_Class as Job_Class FROM Employee E WHERE E.Employee_ID = $selected_emp_id";
 
-        $res_initial = $conn->query($sql_initial)
-        echo "Employee ID = $selected_emp_id"
-        $job_class_value = null
+        $res_initial = $conn->query($sql_initial);
+        echo "Employee ID = $selected_emp_id";
+        $job_class_value = null;
         // Check if the query was successful
         if ($res_initial) {
             // Fetch the result as an associative array
