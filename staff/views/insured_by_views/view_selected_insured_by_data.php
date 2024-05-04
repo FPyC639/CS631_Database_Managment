@@ -123,6 +123,12 @@
 </head>
 <body>
     <h2>Selected Insured_By Table Data</h2>
-    
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="insid">Insurance ID:</label><br>
+        <input type="text" id="insid" name="insid"><br><br>
+        <label for="patid">Patient ID:</label><br>
+        <input type="text" id="patid" name="patid"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

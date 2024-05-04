@@ -63,6 +63,10 @@
 </head>
 <body>
     <h2>Selected Insurance_Company Table Data</h2>
-   
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="insid">Insurance ID:</label><br>
+        <input type="text" id="insid" name="insid"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

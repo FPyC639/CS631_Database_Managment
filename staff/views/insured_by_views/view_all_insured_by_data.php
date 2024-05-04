@@ -1,5 +1,12 @@
-<?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Insured_By Data</title>
+</head>
+<body>
+    <h2>Insured_By Table Data</h2>
+    <?php
+        function generate_table() {
 
             // Connect to your database
             $servername = "localhost";
@@ -55,14 +62,8 @@
             }
             $conn->close();
         }
-    ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Insured_By Data</title>
-</head>
-<body>
-    <h2>Insured_By Table Data</h2>
-    
+
+        generate_table();
+    ?>    
 </body>
 </html>
