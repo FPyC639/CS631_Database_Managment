@@ -82,7 +82,7 @@
 </head>
 <body>
     <h2>Facility Table Data for Selected Facility Type</h2>
-    <form maction="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <label for="factype">Select Facility Type:</label><br>
         <select name="factype" id="factype">
             <option value="Office">Office</option>

@@ -99,6 +99,10 @@
 </head>
 <body>
     <h2>Facility Table Data for Selected Facility_ID</h2>
-
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="facid">Facility ID:</label><br>
+        <input type="text" id="facid" name="facid"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
