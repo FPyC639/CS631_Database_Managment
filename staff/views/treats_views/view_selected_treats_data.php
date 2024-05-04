@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Treats Data</title>
-</head>
-<body>
-    <h2>Selected Treats Table Data</h2>
-    <?php
+<?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $selected_doc_id = $_POST["docid"];
             $selected_pat_id = $_POST["patid"];
@@ -123,5 +116,13 @@
             $conn->close();
         }
     ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Treats Data</title>
+</head>
+<body>
+    <h2>Selected Treats Table Data</h2>
+    
 </body>
 </html>

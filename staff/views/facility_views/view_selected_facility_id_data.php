@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Facility Data</title>
-</head>
-<body>
-    <h2>Facility Table Data for Selected Facility_ID</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selected_fac_id = $_POST["facid"];
@@ -99,5 +92,13 @@
         $conn->close();
     }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Facility Data</title>
+</head>
+<body>
+    <h2>Facility Table Data for Selected Facility_ID</h2>
+
 </body>
 </html>

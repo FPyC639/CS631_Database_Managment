@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Facility Data</title>
-</head>
-<body>
-    <h2>Facility Table Data for Selected Facility Type</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selected_facility_type = $_POST["factype"];
@@ -82,5 +75,13 @@
         $conn->close();
     }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Facility Data</title>
+</head>
+<body>
+    <h2>Facility Table Data for Selected Facility Type</h2>
+
 </body>
 </html>

@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Facility Data</title>
-</head>
-<body>
-    <h2>Facility Table Data</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -65,5 +58,13 @@
         $conn->close();
     }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Facility Data</title>
+</head>
+<body>
+    <h2>Facility Table Data</h2>
+
 </body>
 </html>

@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Employee Assignments Data</title>
-</head>
-<body>
-    <h2>Employee Assignments Data</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -63,5 +56,13 @@
         $conn->close();
     }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Employee Assignments Data</title>
+</head>
+<body>
+    <h2>Employee Assignments Data</h2>
+
 </body>
 </html>

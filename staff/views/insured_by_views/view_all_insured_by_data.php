@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Insured_By Data</title>
-</head>
-<body>
-    <h2>Insured_By Table Data</h2>
-    <?php
+<?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Connect to your database
@@ -63,5 +56,13 @@
             $conn->close();
         }
     ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Insured_By Data</title>
+</head>
+<body>
+    <h2>Insured_By Table Data</h2>
+    
 </body>
 </html>
