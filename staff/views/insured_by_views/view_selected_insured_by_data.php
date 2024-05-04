@@ -7,8 +7,8 @@
     <h2>Selected Insured_By Table Data</h2>
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $selected_ins_id = $_POST["insid"]
-            $selected_pat_id = $_POST["patid"]
+            $selected_ins_id = $_POST["insid"];
+            $selected_pat_id = $_POST["patid"];
             // Connect to your database
             $servername = "localhost";
             $username = "root";
@@ -21,7 +21,7 @@
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-            $sql_addtl = null
+            $sql_addtl = null;
             // Execute your SELECT statement
             if ($selected_ins_id === null && $selected_pat_id === null) {
                 echo "Neither Insurer ID nor Patient ID was provided. Returning results for entire Insured_By table";

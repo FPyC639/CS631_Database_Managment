@@ -7,7 +7,7 @@
     <h2>Selected Insurance_Company Table Data</h2>
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $selected_ins_id = $_POST["insid"]
+            $selected_ins_id = $_POST["insid"];
             // Connect to your database
             $servername = "localhost";
             $username = "root";

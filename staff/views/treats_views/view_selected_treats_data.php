@@ -7,8 +7,8 @@
     <h2>Selected Treats Table Data</h2>
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $selected_doc_id = $_POST["docid"]
-            $selected_pat_id = $_POST["patid"]
+            $selected_doc_id = $_POST["docid"];
+            $selected_pat_id = $_POST["patid"];
             // Connect to your database
             $servername = "localhost";
             $username = "root";
@@ -21,22 +21,22 @@
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-            $sql_addtl = null
+            $sql_addtl = null;
             // Execute your SELECT statement
             if ($selected_doc_id === null && $selected_pat_id === null) {
                 echo "Neither Patient ID nor Physician ID was provided. Returning results for entire Treats table";
                 $sql = "SELECT * FROM Treats";
             }
             elseif ($selected_doc_id === null) {
-                echo "Selected Patient is treated by the following Physicians:"
+                echo "Selected Patient is treated by the following Physicians:";
                 $sql = "SELECT Physician_ID FROM Treats WHERE Patient_ID = $selected_pat_id";
             }
             elseif ($selected_pat_id === null) {
-                echo "Selected Physician treats the following Patients:"
+                echo "Selected Physician treats the following Patients:";
                 $sql = "SELECT Patient_ID FROM Treats WHERE Physician_ID = $selected_doc_id";
             }
             else {
-                echo "Selected Physician treats the following Patients:"
+                echo "Selected Physician treats the following Patients:";
                 $sql = "SELECT Patient_ID FROM Treats WHERE Physician_ID = $selected_doc_id";
                 
                 $sql_addtl = "SELECT Physician_ID FROM Treats WHERE Patient_ID = $selected_pat_id";

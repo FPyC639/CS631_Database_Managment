@@ -24,9 +24,9 @@
 
         $sql_initial = "SELECT F.Facility_ID as Facility_ID FROM Facility F WHERE F.Facility_ID = $selected_fac_id";
 
-        $res_initial = $conn->query($sql_initial)
-        echo "Facility ID = $selected_fac_id"
-        $facility_type_value = null
+        $res_initial = $conn->query($sql_initial);
+        echo "Facility ID = $selected_fac_id";
+        $facility_type_value = null;
         // Check if the query was successful
         if ($res_initial) {
             // Fetch the result as an associative array
