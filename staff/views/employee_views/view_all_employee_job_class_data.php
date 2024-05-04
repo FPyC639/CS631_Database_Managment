@@ -95,6 +95,15 @@
 </head>
 <body>
     <h2>Employee Table Data for Selected Job Class</h2>
-
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <label for="empjobclass">Select Job Class:</label><br>
+        <select name="empjobclass" id="empjobclass">
+            <option value="HCP">HCP</option>
+            <option value="MD">Doctor</option>
+            <option value="Nurse">Nurse</option>
+            <option value="Admin">Admin</option>
+            <!-- Add more options as needed -->
+        </select><br><br>
+        <input type="submit" value="Submit">
 </body>
 </html>

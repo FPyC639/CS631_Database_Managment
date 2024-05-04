@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Employee Data</title>
-</head>
-<body>
-    <h2>Employee Table Data for Selected Employee_ID</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selected_emp_id = $_POST["empid"];
@@ -114,5 +107,17 @@
     }
     echo "</body></html>";
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Employee Data</title>
+</head>
+<body>
+    <h2>Employee Table Data for Selected Employee_ID</h2>
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="empid">Employee ID:</label><br>
+        <input type="text" id="empid" name="empid"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

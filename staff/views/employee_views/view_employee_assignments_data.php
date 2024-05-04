@@ -1,5 +1,5 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    function generate_table() {
 
         // Connect to your database
         $servername = "localhost";
@@ -55,6 +55,8 @@
         }
         $conn->close();
     }
+
+    generate_table();
 ?>
 <!DOCTYPE html>
 <html>

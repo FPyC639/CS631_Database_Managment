@@ -1,5 +1,12 @@
-<?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Employee Data</title>
+</head>
+<body>
+    <h2>Employee Table Data</h2>
+    <?php
+    function generate_table() {
 
         // Connect to your database
         $servername = "localhost";
@@ -57,14 +64,7 @@
         }
         $conn->close();
     }
+    generate_table();
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Employee Data</title>
-</head>
-<body>
-    <h2>Employee Table Data</h2>
-
 </body>
 </html>
