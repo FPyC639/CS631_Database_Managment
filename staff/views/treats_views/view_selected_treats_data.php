@@ -123,6 +123,12 @@
 </head>
 <body>
     <h2>Selected Treats Table Data</h2>
-    
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="docid">Doctor ID:</label><br>
+        <input type="text" id="docid" name="docid"><br><br>
+        <label for="patid">Patient ID:</label><br>
+        <input type="text" id="patid" name="patid"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
