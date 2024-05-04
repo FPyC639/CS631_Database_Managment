@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View List of Appointments for Selected Date and Physician</title>
-</head>
-<body>
-    <h2>List of Appointments for Selected Date and Physician</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selected_date = $_POST["apptdate"];
@@ -66,5 +59,13 @@
         $conn->close();
     }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View List of Appointments for Selected Date and Physician</title>
+</head>
+<body>
+    <h2>List of Appointments for Selected Date and Physician</h2>
+
 </body>
 </html>

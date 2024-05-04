@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Appointment Data</title>
-</head>
-<body>
-    <h2>Invoice_Detail Table Data for Selected Patient_ID, Physician_ID, Facility_ID, and Appointment Date & Time</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $selected_pat_id = $_POST["patid"]
-        $selected_doc_id = $_POST["docid"]
-        $selected_fac_id = $_POST["facid"]
-        $selected_date_time = $_POST["apptdatetime"]
+        $selected_pat_id = $_POST["patid"];
+        $selected_doc_id = $_POST["docid"];
+        $selected_fac_id = $_POST["facid"];
+        $selected_date_time = $_POST["apptdatetime"];
         // Connect to your database
         $servername = "localhost";
         $username = "root";
@@ -70,5 +63,13 @@
         $conn->close();
     }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Appointment Data</title>
+</head>
+<body>
+    <h2>Invoice_Detail Table Data for Selected Patient_ID, Physician_ID, Facility_ID, and Appointment Date & Time</h2>
+
 </body>
 </html>

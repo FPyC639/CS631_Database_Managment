@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Revenue by Facility for Given Day</title>
-</head>
-<body>
-    <h2>Revenue by Facility for Given Day</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selected_date = $_POST["invdate"];
@@ -117,5 +110,13 @@
         $conn->close();
     }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Revenue by Facility for Given Day</title>
+</head>
+<body>
+    <h2>Revenue by Facility for Given Day</h2>
+
 </body>
 </html>

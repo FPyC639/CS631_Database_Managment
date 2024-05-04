@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View List of Appointments by Selected Date Range and Facility</title>
-</head>
-<body>
-    <h2>List of Appointments by Selected Date Range and Facility</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selected_begin_date = $_POST["apptbegindate"];
@@ -67,5 +60,13 @@
         $conn->close();
     }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View List of Appointments by Selected Date Range and Facility</title>
+</head>
+<body>
+    <h2>List of Appointments by Selected Date Range and Facility</h2>
+
 </body>
 </html>

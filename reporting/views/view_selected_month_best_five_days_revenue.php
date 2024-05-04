@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Best 5 Days by Total Revenue for Selected Month</title>
-</head>
-<body>
-    <h2>Best 5 Days by Total Revenue for Selected Month</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selected_date_time = $_POST["apptdatetime"];
@@ -70,5 +63,13 @@
         $conn->close();
     }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Best 5 Days by Total Revenue for Selected Month</title>
+</head>
+<body>
+    <h2>Best 5 Days by Total Revenue for Selected Month</h2>
+
 </body>
 </html>

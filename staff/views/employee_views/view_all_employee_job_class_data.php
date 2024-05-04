@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Employee Data</title>
-</head>
-<body>
-    <h2>Employee Table Data for Selected Job Class</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selected_job_class = $_POST["empjobclass"];
@@ -95,5 +88,13 @@
         $conn->close();
     }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Employee Data</title>
+</head>
+<body>
+    <h2>Employee Table Data for Selected Job Class</h2>
+
 </body>
 </html>

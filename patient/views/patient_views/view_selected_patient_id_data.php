@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Patient Data</title>
-</head>
-<body>
-    <h2>Patient Table Data for Selected Patient_ID</h2>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selected_pat_id = $_POST["patid"];
@@ -66,5 +59,13 @@
     }
     echo "</body></html>";
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Patient Data</title>
+</head>
+<body>
+    <h2>Patient Table Data for Selected Patient_ID</h2>
+
 </body>
 </html>
