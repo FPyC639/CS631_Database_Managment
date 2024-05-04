@@ -95,7 +95,7 @@
 </head>
 <body>
     <h2>Employee Table Data for Selected Job Class</h2>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <label for="empjobclass">Select Job Class:</label><br>
         <select name="empjobclass" id="empjobclass">
             <option value="HCP">HCP</option>
