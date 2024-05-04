@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" name="viewport" content="text/html; charset=UTF-8">
+	<title>patient.html</title>
+	<style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120vh;
+        }
+        h1 {
+            color: #bb591c;
+            margin: 0 0 1.5em 0;
+            font-size: 22pt;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+        h3 {
+            color: #bb591c;
+            margin: 0 0 1.5em 0;
+            font-size: 22pt;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+        p {
+            color: #1ab305;
+            margin: 0 0 1.5em 0;
+            font-size: 12pt;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+        label {
+            display: block;
+            margin-bottom: 0px;
+            color: #000000;
+        }
+        label:hover {
+            display: block;
+            margin-bottom: 0px;
+            color: #000000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        label:has(input:checked) {
+            color: #0d00ff;
+            font-weight: bold;
+        }
+        label:hover:has(input:checked) {
+            display: block;
+            margin-bottom: 0px;
+            color: #000000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 3px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type='reset'] {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        	padding: 10px 20px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type='reset']:hover {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: bold;
+        	padding: 10px 20px;
+            background-color: #0004ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type='submit'] {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        	padding: 10px 20px;
+            background-color: #1ab305;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type='submit']:hover {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: bold;
+        	padding: 10px 20px;
+            background-color: #0004ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .container {
+            background-color: rgb(236, 236, 210);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .text_box {
+            color: #001a68;
+            border: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            break-before: always;
+            margin: 0 -1.5em 1.5em 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            <div align="center" style="vertical-align: top;">
+                <h3 id="1" style="vertical-align: top;">
+                    Welcome to the Employee and Facility Management Portal! Here you can insert, update, and view employee records.
+                </h3>
+                <div>
+                    <p id="1" align="left" style="text-indent: 15px;">
+                        To insert facility data please use the following hyperlink: <a href="ifac.php">Facility Insert Hyperlink Forum</a>.
+                        To make the best use of page please ensure to follow the details in the link and insert the data carefully.
+                    </p>
+                </div>
+                <div>
+                    <p id="2" align="left" style="text-indent: 15px;">
+                        To update patient records please use the following hyperlink: <a href="patient.html">Patient Update Hyperlink Forum</a>.
+                        This forum has a unique feature that it showcases the patients in a particular facility, and by doctor allowing you to filter well
+                        with minimal training. The interface designed is user-friendly and caters to individuals that may not be tech savy.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div>   
+        <div>
+            <div>
+                <p id="3" style="text-indent: 15px;">
+                    To view patient records you can access that via the following hyperlink: <a href="vpatient.php">Patient View Hyperlink Forum</a>.
+                    Here in this forum you will be able to filter by facility, and doctor.
+                </p>
+            </div>
+            <div>
+
+            </div>
+        </div>
+        
+        </div>
+    </div>
+</body>
+</html>
