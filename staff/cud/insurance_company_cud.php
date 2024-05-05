@@ -260,7 +260,7 @@
     }
 </script>
 <body>
-<form name="insurance_company" action="http://localhost:8080/DB_Final_Project/Main" method="post">
+<form name="insurance_company" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	<h1>MHS Insurance Company Module</h1>
 	<input type = "hidden" name = "table-name" value = "Insurance_Company" />
 	<p>Select an option from the dropdown:
