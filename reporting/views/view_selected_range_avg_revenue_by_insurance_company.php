@@ -67,6 +67,12 @@
 </head>
 <body>
     <h2>Revenue in Selected Date Range from Insurance Companies</h2>
-
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="apptbegindate">Begin Date:</label><br>
+        <input type="date" id="apptbegindate" name="apptbegindate"><br><br>
+        <label for="apptenddate">End Date:</label><br>
+        <input type="date" id="apptenddate" name="apptenddate"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

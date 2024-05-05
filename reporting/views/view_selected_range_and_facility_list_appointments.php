@@ -67,6 +67,14 @@
 </head>
 <body>
     <h2>List of Appointments by Selected Date Range and Facility</h2>
-
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="apptbegindate">Begin Date:</label><br>
+        <input type="date" id="apptbegindate" name="apptbegindate"><br><br>
+        <label for="apptenddate">End Date:</label><br>
+        <input type="date" id="apptenddate" name="apptenddate"><br><br>
+        <label for="facid">Facility ID:</label><br>
+        <input type="text" id="facid" name="facid"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
