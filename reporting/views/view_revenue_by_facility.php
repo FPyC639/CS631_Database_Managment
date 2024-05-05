@@ -117,6 +117,13 @@
 </head>
 <body>
     <h2>Revenue by Facility for Given Day</h2>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="invdate">Invoice Date:</label><br>
+        <input type="date" id="invdate" name="invdate"><br><br>
+        <label for="facid">Facility ID:</label><br>
+        <input type="text" id="facid" name="facid"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 
 </body>
 </html>

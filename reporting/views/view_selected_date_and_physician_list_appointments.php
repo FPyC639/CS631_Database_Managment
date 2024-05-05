@@ -66,6 +66,12 @@
 </head>
 <body>
     <h2>List of Appointments for Selected Date and Physician</h2>
-
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="apptdate">Appointment Date:</label><br>
+        <input type="date" id="apptdate" name="apptdate"><br><br>
+        <label for="docid">Doctor ID:</label><br>
+        <input type="text" id="docid" name="docid"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

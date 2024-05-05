@@ -70,6 +70,12 @@
 </head>
 <body>
     <h2>Best 5 Days by Total Revenue for Selected Month</h2>
-
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="apptdatetime">Appointment Date/Time:</label><br>
+        <input type="datetime-local" id="apptdatetime" name="apptdatetime"><br><br>
+        <label for="docid">Doctor ID:</label><br>
+        <input type="text" id="docid" name="docid"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
