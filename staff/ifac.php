@@ -57,6 +57,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if($_POST["operation"] = $u){
         // Write Update PHP Section
+        // Assuming $facility_id contains the ID of the facility to be updated
+    $facility_id = $_POST['facid'];
+    if ($factype == "Office") {
+        $officecount = $_POST["officecount"];
+        $sql = "UPDATE Facility 
+            SET Street = '$facstreet', 
+                City = '$faccity', 
+                State = '$facstate', 
+                Zip_Code = '$faczip', 
+                Size = '$facsize', 
+                Facility_Type = 'Office', 
+                Office_Count = '$officecount'
+            WHERE Facility_ID = '$facility_id'";
+    } elseif ($factype == "OPS") {
+        $opsproccode = $_POST["opsproccode"];
+        $opsprocdesc = $_POST["opsprocdesc"];
+        $opsroomcount = $_POST["opsroomcount"];
+        $sql = "UPDATE Facility 
+            SET Facility_Street = '$facstreet', 
+                Facility_City = '$faccity', 
+                Facility_State = '$facstate', 
+                Facility_Zip_Code = '$faczip', 
+                Facility_Size = '$facsize', 
+                Procedure_Code = '$opsproccode', 
+                Procedure_Description = '$opsprocdesc', 
+                Room_Count = '$opsroomcount'
+            WHERE Facility_ID = '$facility_id'";
+}
+
     }
 }
 ?>
