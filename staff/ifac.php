@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
     }
     if($_POST["operation"] = $u){
-
+        // Write Update PHP Section
     }
 }
 ?>
