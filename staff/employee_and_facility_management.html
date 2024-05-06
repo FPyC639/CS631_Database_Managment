@@ -129,6 +129,15 @@
             break-before: always;
             margin: 0 -1.5em 1.5em 0;
         }
+        ul{
+            padding-left: 500px;
+        }
+        li {
+            padding-right: 400px;
+        }
+        li::marker{
+            color:white;
+        }
     </style>
 </head>
 <body>
@@ -139,33 +148,82 @@
                     Welcome to the Employee and Facility Management Portal! Here you can insert, update, and view employee records.
                 </h3>
                 <div>
+                    <h4 id="1" class="basic">
+                        Insert, Update and Delete Employee and Facility Management data
+                    </h4>
                     <p id="1" align="left" style="text-indent: 15px;">
-                        To insert facility data please use the following hyperlink: <a href="ifac.php">Facility Insert Hyperlink Forum</a>.
-                        To make the best use of page please ensure to follow the details in the link and insert the data carefully.
+                        To insert, update, and delete in for employee data:
+                        <ul>
+                            <li>
+                                <a href="/CS631/staff/cud/employee_cud.php">Employee Form</a>
+                            </li>
+                        </ul>
+                    </p>
+                    <p id="1" class="15" style="text-indent: 15px;">
+                        To insert, update, and delete in for facility data:
+                        <ul>
+                            <li>
+                                <a href="/CS631/staff/cud/facility_cud.php">Facility Form</a>
+                            </li>
+                        </ul>
+                    </p>
+                    <p id="1" class="15" style="text-indent: 15px;">
+                        To insert, update, and delete in for insurance company data.
+                        <ul>
+                            <li>
+                                <a href="/CS631/staff/cud/insurance_company_cud.php">Insurance Company Form</a>
+                            </li>
+                        </ul>
                     </p>
                 </div>
                 <div>
                     <p id="2" align="left" style="text-indent: 15px;">
-                        To update patient records please use the following hyperlink: <a href="patient.html">Patient Update Hyperlink Forum</a>.
-                        This forum has a unique feature that it showcases the patients in a particular facility, and by doctor allowing you to filter well
-                        with minimal training. The interface designed is user-friendly and caters to individuals that may not be tech savy.
+                        To view the tables for staff please use the following links as well please pay attention to the options on the
+                        menu.
                     </p>
+                    <ul>
+                        <li>
+                            <a href="/CS631/staff/views/employee_views/view_all_employee_data.php">View all employee data</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/employee_views/view_all_employee_job_class_data.php">View all employee job class data</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/employee_views/view_employee_assignments_data.php">View all employee assignments data</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/employee_views/view_selected_employee_id_data.php">View employee selected id.</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/facility_views/view_all_facility_data.php">View all facility data</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/facility_views/view_all_facility_facility_type_data.php">View all facility type data</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/facility_views/view_selected_facility_id_data.php">View selected facility data.</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/insurance_company_views/view_all_insurance_company_data.php">View all insurance company data</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/insurance_company_views/view_selected_insurer_id_data.php">View selected insurer data</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/insured_by_views/view_all_insured_by_data.php">View insured by data</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/insured_by_views/view_selected_insured_by_data.php">View selected insured individual</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/treats_views/view_all_treats_data.php">View all patient data</a>
+                        </li>
+                        <li>
+                            <a href="/CS631/staff/views/treats_views/view_selected_treats_data.php">View selected patient data</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div>   
-        <div>
-            <div>
-                <p id="3" style="text-indent: 15px;">
-                    To view patient records you can access that via the following hyperlink: <a href="vpatient.php">Patient View Hyperlink Forum</a>.
-                    Here in this forum you will be able to filter by facility, and doctor.
-                </p>
-            </div>
-            <div>
-
-            </div>
-        </div>
-        
         </div>
     </div>
 </body>

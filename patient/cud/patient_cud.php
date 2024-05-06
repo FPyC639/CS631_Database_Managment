@@ -2,16 +2,6 @@
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve form data
-        <p>Patient First Name: <input type="text" name="patfname" /></p>
-		<p>Patient Middle Initial: <input type="text" name="patminit" /></p>
-		<p>Patient Last Name: <input type="text" name="patlname" /></p>
-		<p>Patient Street Address: <input type="text" name="patstreet" /></p>
-		<p>Patient City: <input type="text" name="patcity" /></p>
-		<p>Patient State: <input type="text" name="patstate" /></p>
-		<p>Patient Zip Code: <input type="text" name="patzip" /></p>
-		<p>Patient Primary Physician ID: <input type="text" name="patdocid" /></p>
-        <p>Patient Insurer ID: <input type="text" name="patinsid" /></p>
-
         $patfname = $_POST["patfname"];
         $patminit = $_POST["patminit"];
         $patlname = $_POST["patlname"];
