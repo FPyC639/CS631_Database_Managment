@@ -58,6 +58,7 @@
         $dbname = "MHS";
         $i = "Insert";
         $u = "Update";
+        $d = "Delete";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -85,7 +86,8 @@
                 // Retrieve the latest inserted Employee_ID for this Job Class
                 $sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
                 $stmt_new_empid = $conn->prepare($sql_get_new_empid);
-                $result = $stmt_new_empid->execute();
+                $stmt_new_empid->execute();
+                $result = $stmt_new_empid->get_result();
                 $latestRecord = $result->fetch_assoc();
                 $latestEmployeeID = $latestRecord['Employee_ID'];
 
