@@ -101,7 +101,8 @@
                 // Retrieve the latest inserted Employee_ID for this Job Class
                 $sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
                 $stmt_new_empid = $conn->prepare($sql_get_new_empid);
-                $result = $stmt_new_empid->execute();
+                $stmt_new_empid->execute();
+                $result = $stmt_new_empid->get_result(); 
                 $latestRecord = $result->fetch_assoc();
                 $latestEmployeeID = $latestRecord['Employee_ID'];
 
@@ -117,7 +118,8 @@
                 // Retrieve the latest inserted Employee_ID for this Job Class
                 $sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
                 $stmt_new_empid = $conn->prepare($sql_get_new_empid);
-                $result = $stmt_new_empid->execute();
+                $stmt_new_empid->execute();
+                $result = $stmt_new_empid->get_result(); 
                 $latestRecord = $result->fetch_assoc();
                 $latestEmployeeID = $latestRecord['Employee_ID'];
 
@@ -133,7 +135,8 @@
                 // Retrieve the latest inserted Employee_ID for this Job Class
                 $sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
                 $stmt_new_empid = $conn->prepare($sql_get_new_empid);
-                $result = $stmt_new_empid->execute();
+                $stmt_new_empid->execute();
+                $result = $stmt_new_empid->get_result(); 
                 $latestRecord = $result->fetch_assoc();
                 $latestEmployeeID = $latestRecord['Employee_ID'];
 
@@ -274,7 +277,8 @@
                 $stmt_check->bind_param("i", $employee_id);
                 $stmt_check->execute();
                 if ($stmt_check->rowCount() > 0) {
-                    $query_result = $stmt_check->fetch_assoc();
+                    $result = $stmt_check->get_result(); 
+                    $query_result = $result->fetch_assoc();
                     $old_empjobclass = $query_result['Job_Class'];
                     if ($old_empjobclass == $empjobclass) {
                         $sql_subclass .= " ";
@@ -306,7 +310,8 @@
                 $stmt_check->bind_param("i", $employee_id);
                 $stmt_check->execute();
                 if ($stmt_check->rowCount() > 0) {
-                    $query_result = $stmt_check->fetch_assoc();
+                    $result = $stmt_check->get_result();
+                    $query_result = $result->fetch_assoc();
                     $old_empjobclass = $query_result['Job_Class'];
                     if ($old_empjobclass == $empjobclass) {
                         $sql_subclass .= " ";
@@ -345,7 +350,8 @@
                 $stmt_check->bind_param("i", $employee_id);
                 $stmt_check->execute();
                 if ($stmt_check->rowCount() > 0) {
-                    $query_result = $stmt_check->fetch_assoc();
+                    $result = $stmt_check->get_result();
+                    $query_result = $result->fetch_assoc();
                     $old_empjobclass = $query_result['Job_Class'];
                     if ($old_empjobclass == $empjobclass) {
                         $sql_subclass .= " ";
@@ -374,7 +380,8 @@
                 $stmt_check->bind_param("i", $employee_id);
                 $stmt_check->execute();
                 if ($stmt_check->rowCount() > 0) {
-                    $query_result = $stmt_check->fetch_assoc();
+                    $result = $stmt_check->get_result();
+                    $query_result = $result->fetch_assoc();
                     $old_empjobclass = $query_result['Job_Class'];
                     if ($old_empjobclass == $empjobclass) {
                         $sql_subclass .= " ";
