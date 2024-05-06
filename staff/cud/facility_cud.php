@@ -60,7 +60,7 @@
                 $result = $stmt_new_facid->get_result();
                  // Fetch the data as an associative array.
                 $latestRecord = $result->fetch_assoc();
-                $latestFacilityID = $latestRecord['Facility_ID']
+                $latestFacilityID = $latestRecord['Facility_ID'];
 
                 // Only need to perform an update on the subclass as the trigger after insertion in superclass should have already created the corresponding record in the subclass
                 $sql1 = "UPDATE Office SET Office_Count = ? WHERE Facility_ID = ?";
@@ -82,7 +82,7 @@
                 $result = $stmt_new_facid->get_result();
                  // Fetch the data as an associative array.
                 $latestRecord = $result->fetch_assoc();
-                $latestFacilityID = $latestRecord['Facility_ID']
+                $latestFacilityID = $latestRecord['Facility_ID'];
 
                 // Only need to perform an update on the subclass as the trigger after insertion in superclass should have already created the corresponding record in the subclass
                 $sql1 = "UPDATE Outpatient_Surgery SET Procedure_Code = ?, Procedure_Description = ?, Room_Count = ? WHERE Facility_ID = ?";
