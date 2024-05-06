@@ -28,23 +28,25 @@
             // First Insert into Facility
             $sql0 = "INSERT INTO Facility (Street, City, State, Zip_Code, Size, Facility_Type) 
                     VALUES ('$facstreet', '$faccity', '$facstate', '$faczip', '$facsize', 'Office')";
-            $stmt0 = $pdo->prepare($sql0);
+            $stmt0 = $conn->prepare($sql0);
             $stmt0->execute();
             if ($factype == "Office") {
                 $officecount = $_POST["officecount"];
                 // Retrieve the latest inserted Facility_ID for this Facility_Type
                 $sql_get_new_facid = "SELECT Facility_ID FROM Facility WHERE Facility_Type = 'Office' ORDER BY Facility_ID DESC LIMIT 1";
-                $stmt_new_facid = $pdo->prepare($sql_get_new_facid);
+                $stmt_new_facid = $conn->prepare($sql_get_new_facid);
                 $stmt_new_facid->execute();
-                $latestRecord = $stmt_new_facid->fetch(PDO::FETCH_ASSOC);
-                $latestFacilityID = $latestRecord['Facility_ID'];
+
+                // Get the result set from the prepared statement.
+                $result = $stmt_new_facid->get_result();
+
+                 // Fetch the data as an associative array.
+                $latestRecord = $result->fetch_assoc();
 
                 // Only need to perform an update on the subclass as the trigger after insertion in superclass should have already created the corresponding record in the subclass
-                $sql1 = "UPDATE Office SET Office_Count = :officeCount WHERE Facility_ID = :facilityID";
-                
-                $stmt1 = $pdo->prepare($sql1);
-                $stmt1->bindParam(':officeCount', $officecount, PDO::PARAM_INT);
-                $stmt1->bindParam(':facilityID', $latestFacilityID, PDO::PARAM_INT);
+                $sql1 = "UPDATE Office SET Office_Count = ? WHERE Facility_ID = ?";
+                $stmt1 = $conn->prepare($sql1);
+                $stmt1->bind_param("ii", $officecount, $latestFacilityID);
                 $stmt1->execute();
                 
             } elseif ($factype == "OPS") {
@@ -53,7 +55,7 @@
                 $opsroomcount = $_POST["opsroomcount"];
                 // Retrieve the latest inserted Facility_ID for this Facility_Type
                 $sql_get_new_facid = "SELECT Facility_ID FROM Facility WHERE Facility_Type = 'OPS' ORDER BY Facility_ID DESC LIMIT 1";
-                $stmt_new_facid = $pdo->prepare($sql_get_new_facid);
+                $stmt_new_facid = $conn->prepare($sql_get_new_facid);
                 $stmt_new_facid->execute();
                 $latestRecord = $stmt_new_facid->fetch(PDO::FETCH_ASSOC);
                 $latestFacilityID = $latestRecord['Facility_ID'];
@@ -61,7 +63,7 @@
                 // Only need to perform an update on the subclass as the trigger after insertion in superclass should have already created the corresponding record in the subclass
                 $sql1 = "UPDATE Outpatient_Surgery SET Procedure_Code = :opsProcCode, Procedure_Description = '$opsprocdesc', Room_Count = :roomCount WHERE Facility_ID = :facilityID";
                 
-                $stmt1 = $pdo->prepare($sql1);
+                $stmt1 = $conn->prepare($sql1);
                 $stmt1->bindParam(':opsProcCode', $opsproccode, PDO::PARAM_INT);
                 $stmt1->bindParam(':roomCount', $officecount, PDO::PARAM_INT);
                 $stmt1->bindParam(':facilityID', $latestFacilityID, PDO::PARAM_INT);
@@ -121,7 +123,7 @@
             }
             if ($facstreet !== null || $faccity !== null || $facstate !== null || $faczip !== null) {
                 $sql .= " WHERE Facility_ID = :facility_id_val";
-                $stmt_update_main = $pdo->prepare($sql);
+                $stmt_update_main = $conn->prepare($sql);
                 $stmt_update_main->bindParam(':facility_id_val', $facility_id, PDO::PARAM_INT);
                 $stmt_update_main->execute();
             }
@@ -131,7 +133,7 @@
                 $sql_subclass = "UPDATE Office SET ";
                 $sql_check = "SELECT Facility_Type FROM Facility WHERE Facility_ID = :fac_id_value";
 
-                $stmt_check = $pdo->prepare($sql_check);
+                $stmt_check = $conn->prepare($sql_check);
                 $stmt_check->bindParam(':fac_id_value', $facility_id, PDO::PARAM_INT);
                 $stmt_check->execute();
                 if ($stmt_check->rowCount() > 0) {
@@ -152,7 +154,7 @@
                 }
                 if ($officecount !== null) {
                     $sql_subclass .= "Office_Count = :office_count_val";
-                    $stmt_subclass = $pdo->prepare($sql_subclass);
+                    $stmt_subclass = $conn->prepare($sql_subclass);
                     $stmt_subclass->bindParam(':office_count_val', $officecount, PDO::PARAM_INT);
                     $stmt_subclass->execute();
 
@@ -166,7 +168,7 @@
                 $sql_subclass = "UPDATE Outpatient_Surgery SET ";
                 $sql_check = "SELECT Facility_Type FROM Facility WHERE Facility_ID = :fac_id_value";
 
-                $stmt_check = $pdo->prepare($sql_check);
+                $stmt_check = $conn->prepare($sql_check);
                 $stmt_check->bindParam(':fac_id_value', $facility_id, PDO::PARAM_INT);
                 $stmt_check->execute();
                 if ($stmt_check->rowCount() > 0) {
@@ -214,24 +216,24 @@
         }
         if ($_POST["operation"] == $d) {
             $facility_id = $_POST["delfacid"];
-            $sql_delete_superclass = "DELETE FROM Facility WHERE Facility_ID = :fac_id_val";
+            $sql_delete_superclass = "DELETE FROM Facility WHERE Facility_ID = ?";
             // Subclasses now deleted as per cascade delete constraint
             /*if ($facility_type == "Office") {
                 $sql_delete_subclass = "DELETE FROM Office WHERE Facility_ID = :fac_id_val";
-                $stmt_del_subclass_rec = $pdo->prepare($sql_delete_subclass);
+                $stmt_del_subclass_rec = $conn->prepare($sql_delete_subclass);
                 $stmt_del_subclass_rec->bindParam('fac_id_val', $facility_id, PDO::PARAM_INT);
                 $stmt_del_subclass_rec->execute();
                 echo "Facility ID = '$facility_id' has been successfully deleted from Office Table";
             }
             elseif ($facility_type == "OPS") {
                 $sql_delete_subclass = "DELETE FROM Outpatient_Surgery WHERE Facility_ID = :fac_id_val";
-                $stmt_del_subclass_rec = $pdo->prepare($sql_delete_subclass);
+                $stmt_del_subclass_rec = $conn->prepare($sql_delete_subclass);
                 $stmt_del_subclass_rec->bindParam('fac_id_val', $facility_id, PDO::PARAM_INT);
                 $stmt_del_subclass_rec->execute();
                 echo "Facility ID = '$facility_id' has been successfully deleted from Outpatient_Surgery Table";
             }*/
-            $stmt_del_superclass_rec = $pdo->prepare($sql_delete_superclass);
-            $stmt_del_superclass_rec->bindParam('fac_id_val', $facility_id, PDO::PARAM_INT);
+            $stmt_del_superclass_rec = $conn->prepare($sql_delete_superclass);
+            $stmt_del_superclass_rec->bind_param('i', $facility_id);
             $stmt_del_superclass_rec->execute();
             echo "Facility ID = '$facility_id' has been successfully deleted from Facility Table";
         }

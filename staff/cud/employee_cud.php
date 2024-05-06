@@ -32,10 +32,16 @@
         if($_POST["operation"] == $i){
             // First Insert into Employee
             $sql0 = "INSERT INTO Employee (SSN, FName, MInit, LName, Street, City, State, Zip_Code, Salary, Hire_Date, Job_Class, Facility_ID) 
-                    VALUES ('$empssn', '$empfname', '$empminit', '$emplname', '$empstreet', '$empcity', 
-                            '$empstate', '$empzip', '$empsal', '$emphiredt', '$empjobclass', '$empfacid')";
-            $stmt0 = $pdo->prepare($sql0);
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+           
+           $stmt0 = $conn->prepare($sql0);
+            // Assuming all the parameters are strings, bind them as such.
+        // If any of them are different data types (like integers or dates), you should bind them appropriately.
+            $stmt0->bind_param("ssssssssdssd", $empssn, $empfname, $empminit, $emplname, $empstreet, $empcity, 
+                   $empstate, $empzip, $empsal, $emphiredt, $empjobclass, $empfacid);
+            
             $stmt0->execute();
+
             if ($empjobclass == "HCP") {
                 $hcptitle = $_POST["emphcptitle"];
                 
