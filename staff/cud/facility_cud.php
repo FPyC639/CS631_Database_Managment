@@ -26,6 +26,7 @@
         }
         if ($_POST["factype"] !== null) {
             $factype = $_POST["factype"];
+            echo "$factype";
         }
         // Database connection
         $servername = "localhost";
@@ -44,12 +45,14 @@
         }
         if($_POST["operation"] == $i){
             // First Insert into Facility
-            $sql0 = "INSERT INTO Facility (Street, City, State, Zip_Code, Size, Facility_Type) 
-                    VALUES ('$facstreet', '$faccity', '$facstate', '$faczip', '$facsize', 'Office')";
-            $stmt0 = $conn->prepare($sql0);
-            $stmt0->execute();
+            
+            
             echo "New Facility in Facility table has been successfully created";
             if ($factype == "Office") {
+                $sql0 = "INSERT INTO Facility (Street, City, State, Zip_Code, Size, Facility_Type) 
+                    VALUES ('$facstreet', '$faccity', '$facstate', '$faczip', '$facsize', 'Office')";
+                $stmt0 = $conn->prepare($sql0);
+                $stmt0->execute();
                 $officecount = $_POST["officecount"];
                 // Retrieve the latest inserted Facility_ID for this Facility_Type
                 $sql_get_new_facid = "SELECT Facility_ID FROM Facility WHERE Facility_Type = 'Office' ORDER BY Facility_ID DESC LIMIT 1";
@@ -70,11 +73,16 @@
                 echo "New Facility ID = '$latestFacilityID' in Office table has been successfully created and updated";
                 
             } elseif ($factype == "OPS") {
+                $sql0 = "INSERT INTO Facility (Street, City, State, Zip_Code, Size, Facility_Type) 
+                    VALUES ('$facstreet', '$faccity', '$facstate', '$faczip', '$facsize', 'OPS')";
+                $stmt0 = $conn->prepare($sql0);
+                $stmt0->execute();
                 $opsproccode = $_POST["opsproccode"];
                 $opsprocdesc = $_POST["opsprocdesc"];
                 $opsroomcount = $_POST["opsroomcount"];
                 // Retrieve the latest inserted Facility_ID for this Facility_Type
                 $sql_get_new_facid = "SELECT Facility_ID FROM Facility WHERE Facility_Type = 'OPS' ORDER BY Facility_ID DESC LIMIT 1";
+                //$sql_get_new_facid = "SELECT Facility_ID FROM Facility ORDER BY Facility_ID DESC LIMIT 1";
                 $stmt_new_facid = $conn->prepare($sql_get_new_facid);
                 $stmt_new_facid->execute();
                 
