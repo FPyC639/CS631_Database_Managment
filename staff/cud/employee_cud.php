@@ -48,9 +48,9 @@
             $empfacid = $_POST["empfac"];
         }
         if ($_POST["empjobclass"] !== null) {
-            $empjobclass = $_POST["empjobclass"];
+        $empjobclass = $_POST["empjobclass"];
         }
-        
+        echo $empjobclass;
         // Database connection
         $servername = "localhost";
         $username = "root";
@@ -69,22 +69,21 @@
         if($_POST["operation"] == $i){
             // First Insert into Employee
             $sql0 = "INSERT INTO Employee (SSN, FName, MInit, LName, Street, City, State, Zip_Code, Salary, Hire_Date, Job_Class, Facility_ID) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-           
-           $stmt0 = $conn->prepare($sql0);
-           $emphiredt1 = date('Y-m-d', strtotime($emphiredt));
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+   
+            $stmt0 = $conn->prepare($sql0);
             // Assuming all the parameters are strings, bind them as such.
             // If any of them are different data types (like integers or dates), you should bind them appropriately.
-            $stmt0->bind_param("sssssssssssi", $empssn, $empfname, $empminit, $emplname, $empstreet, $empcity, 
-                   $empstate, $empzip, $empsal, $emphiredt1, $empjobclass, $empfacid);
-            
+            $stmt0->bind_param("sssssssssssi", $empssn, $empfname, $empminit, $emplname, $empstreet, $empcity, $empstate, $empzip, $empsal, $emphiredt, $empjobclass, $empfacid);
             $stmt0->execute();
+
             echo "New Employee in Employee table has been successfully created";
             if ($empjobclass == "HCP") {
                 $hcptitle = $_POST["emphcptitle"];
                 
                 // Retrieve the latest inserted Employee_ID for this Job Class
-                $sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
+                //$sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
+                $sql_get_new_empid = "SELECT Employee_ID FROM Employee ORDER BY Employee_ID DESC LIMIT 1";
                 $stmt_new_empid = $conn->prepare($sql_get_new_empid);
                 $stmt_new_empid->execute();
                 $result = $stmt_new_empid->get_result();
@@ -101,10 +100,12 @@
                 $docspecialty = $_POST["empspec"];
                 $docbdcertdate = $_POST["empbdcertdt"];
                 // Retrieve the latest inserted Employee_ID for this Job Class
-                $sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
+                //$sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
+                $sql_get_new_empid = "SELECT Employee_ID FROM Employee ORDER BY Employee_ID DESC LIMIT 1";
                 $stmt_new_empid = $conn->prepare($sql_get_new_empid);
                 $stmt_new_empid->execute();
                 $result = $stmt_new_empid->get_result(); 
+                echo $sql_get_new_empid;
                 $latestRecord = $result->fetch_assoc();
                 $latestEmployeeID = $latestRecord['Employee_ID'];
 
@@ -118,7 +119,8 @@
                 $nursecertification = $_POST["empcert"];
                 
                 // Retrieve the latest inserted Employee_ID for this Job Class
-                $sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
+                //$sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
+                $sql_get_new_empid = "SELECT Employee_ID FROM Employee ORDER BY Employee_ID DESC LIMIT 1";
                 $stmt_new_empid = $conn->prepare($sql_get_new_empid);
                 $stmt_new_empid->execute();
                 $result = $stmt_new_empid->get_result(); 
@@ -135,7 +137,8 @@
                 $admtitle = $_POST["empadmtitle"];
                 
                 // Retrieve the latest inserted Employee_ID for this Job Class
-                $sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
+                //$sql_get_new_empid = "SELECT Employee_ID FROM Employee WHERE Job_Class = '$empjobclass' ORDER BY Employee_ID DESC LIMIT 1";
+                $sql_get_new_empid = "SELECT Employee_ID FROM Employee ORDER BY Employee_ID DESC LIMIT 1";
                 $stmt_new_empid = $conn->prepare($sql_get_new_empid);
                 $stmt_new_empid->execute();
                 $result = $stmt_new_empid->get_result(); 
@@ -644,7 +647,7 @@
 		<p>Employee State: <input type="text" name="empstate" /></p>
 		<p>Employee Zip Code: <input type="text" name="empzip" /></p>
 		<p>Employee Salary: <input type="number" placeholder="50000.00" step="0.01" name="empsal" /></p>
-		<p>Employee Hire Date: <input type="date" name="emphiredt" /></p>
+		<p>Employee Hire Date: <input type="text" name="emphiredt" /></p>
 		<p>Employee Facility ID: <input type="text" name="empfac" /></p>
 	    <p>Employee Job Class: 
 	    <select onchange="EmpJobClassCheck(this)" name="empjobclass">
@@ -661,7 +664,7 @@
 		</div>
 		<div id="MD" style="display: none;">
 			<p>Doctor Specialty: <input type="text" name="empspec" /></p>
-			<p>Doctor Board Certification Date: <input type="date" name="empbdcertdt"/></p>
+			<p>Doctor Board Certification Date: <input type="text" name="empbdcertdt"/></p>
 		</div>
 		<div id="Nurse" style="display: none;">
 			<p>Nurse Certification: <input type="text" name="empcert"/></p>
